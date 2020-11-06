@@ -13,8 +13,7 @@ Enemies spawn occasionally at the edge and go towards the player.
 
 Both asteroids and enemies can be shot.
 
-
-### Idea section:
+### S4kyt says: General idea regarding implementation aimed towards Player, and collision.
   * Player: can be drawn with vectors, consisting out of 4 points which if we connect correctly we get our rocket ship from the original game. Something to note regarding player: lets say we have player's points (ones we wanna connect to get player complete), lets name those points from A-D, that leaves us with smth like:
     * pModel_A, pModel_B, pModel_C, p_Model_D (pModel being playerModel and A-D being the 4 "corners" for player. Since player model is perfectly mirrorable, we could also: A and C can be each other's inverses, so maybe we can make it that much simpler somehow? Still trying to figure out how.
   * "Skybox" (Player limit:
