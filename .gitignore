@@ -1,3 +1,6 @@
+out/*
+CMakeSettings.json
+
 # User-specific files
 *.rsuser
 *.suo
