@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.1)
 
+add_subdirectory(sfml)
+
 project(slappy-lion-test-project)
 
 if(WIN32) 
@@ -9,3 +11,5 @@ elseif(UNIX)
 endif()
 
 add_executable(test main.cpp)
+
+target_link_libraries(test sfml-graphics sfml-system)
