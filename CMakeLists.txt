@@ -12,7 +12,7 @@ elseif(UNIX)
 endif()
 
 add_executable(test main.cpp
-    Game.cpp
+    Game.cpp Game.h
 )
 
 target_link_libraries(test sfml-graphics sfml-system sfml-window)
