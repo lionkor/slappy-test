@@ -16,3 +16,8 @@ add_executable(test main.cpp
 )
 
 target_link_libraries(test sfml-graphics sfml-system sfml-window)
+
+add_custom_command(TARGET test POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+        "${PROJECT_BINARY_DIR}/sfml/lib"
+        $<TARGET_FILE_DIR:test>)
