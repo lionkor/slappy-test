@@ -19,3 +19,8 @@ Both asteroids and enemies can be shot.
   * "Skybox" (Player limit:
     * Player needs collision which we'll have by implementing a new property to player called pModel_Collision of boolean type, having collision always on of course with a while loop in dear player (or maybe somewhere else, but im pretty sure it has to be a loop, maybe in update?).
     * Skybox also needs collision which I would solve with adding the 4 corners (4 corners somehow have to be position according to the window's resolution size of course), making them connect the same way we did with player, vectors, etc. We could name the corners the same way like player so its clean and easy to understand, from left to right, and from top to bottom. A-B-C-D Something to note here: We could also solve this by using A and its inverse called A' for naming convention and B with B'. This way we'd reduce the amount of weird variables by 2, making it that much simpler and easy to read. I hope.
+
+### This project was made reality by using the following library:
+* SFML - Simple and Fast Multimedia Library:
+  * https://www.sfml-dev.org/
+  * https://github.com/SFML/SFML
