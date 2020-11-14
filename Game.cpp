@@ -10,11 +10,12 @@ int Game::run() {
     if (init) {
         init(*this);
     }
+    sf::Clock frame_clock;
     while (m_running) {
         // clear/fill screen with 50% red
         m_window.clear(Color::White);
         if (update) {
-            update(*this);
+            update(*this, frame_clock.restart().asSeconds());
         }
         while (!m_rendering_queue.empty()) {
             auto& drawable = m_rendering_queue.front();
@@ -38,20 +39,35 @@ int Game::run() {
     return 0;
 }
 
-void Game::draw_rectangle(float x, float y, float width, float height, Color color) {
-    auto rect_ptr = std::make_unique<sf::RectangleShape>(sf::Vector2f { width, height });
-    rect_ptr->setPosition(x, y);
-    rect_ptr->setFillColor(color);
+void Game::draw(const Circle& circle) {
+    auto circle_ptr = std::make_unique<sf::CircleShape>(circle.radius);
+    circle_ptr->setOrigin(circle.radius, circle.radius);
+    circle_ptr->setFillColor(circle.fill_color);
+    circle_ptr->setPosition(circle.x, circle.y);
+    circle_ptr->setRotation(circle.rotation);
+    m_rendering_queue.push(std::move(circle_ptr));
+}
+
+void Game::draw(const Rectangle& rect) {
+    auto rect_ptr = std::make_unique<sf::RectangleShape>(sf::Vector2f { rect.width, rect.height });
+    rect_ptr->setPosition(rect.x, rect.y);
+    rect_ptr->setFillColor(rect.fill_color);
     m_rendering_queue.push(std::move(rect_ptr));
 }
 
-void Game::draw_rectangle(const Rectangle& rect) {
-    draw_rectangle(rect.x, rect.y, rect.width, rect.height, rect.color);
+Rectangle::Rectangle(float _x, float _y, float _width, float _height, Color _fill_color)
+    : Shape(_x, _y, _fill_color)
+    , width(_width)
+    , height(_height) { }
+
+Shape::Shape(float _x, float _y, Color _fill_color, float _rotation)
+    : x(_x)
+    , y(_y)
+    , fill_color(_fill_color)
+    , rotation(_rotation) {
 }
 
-Rectangle::Rectangle(float x, float y, float width, float height, Color color)
-    : x(x)
-    , y(y)
-    , width(width)
-    , height(height)
-    , color(color) {}
+Circle::Circle(float _x, float _y, float _radius, Color _fill_color)
+    : Shape(_x, _y, _fill_color)
+    , radius(_radius) {
+}

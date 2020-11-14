@@ -7,7 +7,7 @@
 void init(Game& game);
 
 // called on each frame.
-void update(Game& game);
+void update(Game& game, float dt);
 
 // called right before the game closes.
 void deinit(Game& game);
