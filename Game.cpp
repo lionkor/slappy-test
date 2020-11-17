@@ -39,19 +39,21 @@ int Game::run() {
     return 0;
 }
 
-//void Game::draw(const Circle& circle) {
-//    auto circle_ptr = std::make_unique<sf::CircleShape>(circle.radius);
-//    circle_ptr->setOrigin(circle.radius, circle.radius);
-//    circle_ptr->setFillColor(circle.fill_color);
-//    circle_ptr->setPosition(circle.x, circle.y);
-//    circle_ptr->setRotation(circle.rotation);
-//    m_rendering_queue.push(std::move(circle_ptr));
-//}
+void Game::draw(const Circle& circle) {
+    auto circle_ptr = std::make_unique<sf::CircleShape>(circle.radius);
+    circle_ptr->setOrigin(circle.radius, circle.radius);
+    circle_ptr->setFillColor(circle.fill_color);
+    circle_ptr->setPosition(circle.x, circle.y);
+    circle_ptr->setRotation(circle.rotation);
+    m_rendering_queue.push(std::move(circle_ptr));
+}
 
 void Game::draw(const Rectangle& rect) {
     auto rect_ptr = std::make_unique<sf::RectangleShape>(sf::Vector2f { rect.width, rect.height });
     rect_ptr->setPosition(rect.x, rect.y);
+    rect_ptr->setOrigin(rect.width / 2.0, rect.height / 2.0);
     rect_ptr->setFillColor(rect.fill_color);
+    rect_ptr->setRotation(rect.rotation);
     m_rendering_queue.push(std::move(rect_ptr));
 }
 

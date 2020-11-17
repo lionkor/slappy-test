@@ -25,11 +25,11 @@ struct Rectangle final : public Shape {
     Rectangle() = default;
 };
 
-//struct Circle final : public Shape {
-//    float radius;
-//    Circle(float _x, float _y, float _radius, Color _fill_color = Color::White);
-//    Circle() = default;
-//};
+struct Circle final : public Shape {
+    float radius;
+    Circle(float _x, float _y, float _radius, Color _fill_color = Color::White);
+    Circle() = default;
+};
 
 class Game {
 
@@ -54,7 +54,7 @@ public:
     std::function<void(Game&)> deinit { nullptr };
 
     void draw(const Rectangle& rect);
-    // void draw(const Circle& circle);
+    void draw(const Circle& circle);
 };
 
 #endif // GAME_H

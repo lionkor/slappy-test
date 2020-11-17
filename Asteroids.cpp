@@ -8,8 +8,6 @@ void init(Game&) {
     // player.draw();
 }
 
-// float change = 50.0f;
-
 // dt is "delta time", its the time (in seconds) it took to render the last frame.
 // you use this to make movement independent of framerate.
 // for example, moving a rectange by '50 * dt' will move it by 50 pixels per second.
@@ -36,7 +34,7 @@ void update(Game& game, float dt) {
     }
 
     game.draw(rect);
-    //rect.x += 50.0f * dt;
+    // rect.x += 50.0f * dt;
 }
 
 void deinit(Game&) {
