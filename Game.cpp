@@ -13,7 +13,7 @@ int Game::run() {
     sf::Clock frame_clock;
     while (m_running) {
         // clear/fill screen with 50% red
-        m_window.clear(Color::White);
+        m_window.clear(Color::Black);
         if (update) {
             update(*this, frame_clock.restart().asSeconds());
         }
@@ -66,8 +66,3 @@ Shape::Shape(float _x, float _y, Color _fill_color, float _rotation)
     , fill_color(_fill_color)
     , rotation(_rotation) {
 }
-
-//Circle::Circle(float _x, float _y, float _radius, Color _fill_color)
-//    : Shape(_x, _y, _fill_color)
-//    , radius(_radius) {
-//}

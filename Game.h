@@ -18,8 +18,8 @@ struct Shape {
 };
 
 struct Rectangle final : public Shape {
-    float width { 10 };
-    float height { 10 };
+    float width { 50 };
+    float height { 50 };
 
     Rectangle(float _x, float _y, float _width, float _height, Color _fill_color = Color::White);
     Rectangle() = default;
@@ -54,7 +54,6 @@ public:
     std::function<void(Game&)> deinit { nullptr };
 
     void draw(const Rectangle& rect);
-    void draw(const sf::ConvexShape& convex);
     // void draw(const Circle& circle);
 };
 
