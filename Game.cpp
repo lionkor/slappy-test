@@ -2,7 +2,7 @@
 
 // what we use here is called a "member initializer list"
 Game::Game(const std::string& title)
-    : m_window(sf::VideoMode(1280, 720), title) {
+    : m_window(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), title) {
     m_window.setFramerateLimit(60);
 }
 
@@ -39,14 +39,14 @@ int Game::run() {
     return 0;
 }
 
-void Game::draw(const Circle& circle) {
-    auto circle_ptr = std::make_unique<sf::CircleShape>(circle.radius);
-    circle_ptr->setOrigin(circle.radius, circle.radius);
-    circle_ptr->setFillColor(circle.fill_color);
-    circle_ptr->setPosition(circle.x, circle.y);
-    circle_ptr->setRotation(circle.rotation);
-    m_rendering_queue.push(std::move(circle_ptr));
-}
+//void Game::draw(const Circle& circle) {
+//    auto circle_ptr = std::make_unique<sf::CircleShape>(circle.radius);
+//    circle_ptr->setOrigin(circle.radius, circle.radius);
+//    circle_ptr->setFillColor(circle.fill_color);
+//    circle_ptr->setPosition(circle.x, circle.y);
+//    circle_ptr->setRotation(circle.rotation);
+//    m_rendering_queue.push(std::move(circle_ptr));
+//}
 
 void Game::draw(const Rectangle& rect) {
     auto rect_ptr = std::make_unique<sf::RectangleShape>(sf::Vector2f { rect.width, rect.height });
@@ -67,7 +67,7 @@ Shape::Shape(float _x, float _y, Color _fill_color, float _rotation)
     , rotation(_rotation) {
 }
 
-Circle::Circle(float _x, float _y, float _radius, Color _fill_color)
-    : Shape(_x, _y, _fill_color)
-    , radius(_radius) {
-}
+//Circle::Circle(float _x, float _y, float _radius, Color _fill_color)
+//    : Shape(_x, _y, _fill_color)
+//    , radius(_radius) {
+//}

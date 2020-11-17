@@ -13,8 +13,7 @@ endif()
 
 add_executable(test main.cpp
     Game.cpp Game.h
-    Asteroids.cpp Asteroids.h
-)
+    Asteroids.cpp Asteroids.h "Player.cpp" "Player.h")
 
 target_link_libraries(test sfml-graphics sfml-system sfml-window)
 

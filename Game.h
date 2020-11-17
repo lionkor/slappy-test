@@ -25,17 +25,24 @@ struct Rectangle final : public Shape {
     Rectangle() = default;
 };
 
-struct Circle final : public Shape {
-    float radius;
-    Circle(float _x, float _y, float _radius, Color _fill_color = Color::White);
-    Circle() = default;
-};
+//struct Circle final : public Shape {
+//    float radius;
+//    Circle(float _x, float _y, float _radius, Color _fill_color = Color::White);
+//    Circle() = default;
+//};
 
 class Game {
+
+// For calculating player position, collision, we need this.
+public:
+    static const int SCREEN_WIDTH = 1280;
+    static const int SCREEN_HEIGHT = 720;
+
 private:
     sf::RenderWindow m_window;
     bool m_running { true };
     std::queue<std::unique_ptr<sf::Drawable>> m_rendering_queue;
+
 
 public:
     Game(const std::string& title);
@@ -47,7 +54,8 @@ public:
     std::function<void(Game&)> deinit { nullptr };
 
     void draw(const Rectangle& rect);
-    void draw(const Circle& circle);
+    void draw(const sf::ConvexShape& convex);
+    // void draw(const Circle& circle);
 };
 
 #endif // GAME_H
