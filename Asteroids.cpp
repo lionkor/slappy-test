@@ -2,7 +2,7 @@
 #include "Player.h"
 
 #define _USE_MATH_DEFINES
-#include <cmath>
+#include <math.h>
 
 Rectangle rect;
 
