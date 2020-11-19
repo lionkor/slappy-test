@@ -1,6 +1,7 @@
 #include "Asteroids.h"
 #include "Player.h"
 
+#define _USE_MATH_DEFINES
 #include <cmath>
 
 Rectangle rect;
@@ -10,7 +11,7 @@ void init(Game&) {
     rect.pos.x = Game::SCREEN_WIDTH / 2.0;
     rect.pos.y = Game::SCREEN_HEIGHT / 2.0f;
 
-    rect.texture.loadFromFile("resources/cat.jpg");
+    rect.texture.loadFromFile("image.jpg");
 
     //Player player;
     // player.draw();
