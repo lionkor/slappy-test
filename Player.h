@@ -12,7 +12,6 @@ public:
     const double m_speed = 2.0;
 
 public:
-    // 2. Draw player
     Player() {
         // Setting player position to middle of the screen
         m_posX = Game::SCREEN_WIDTH / 2;
