@@ -9,8 +9,7 @@
 using Color = sf::Color;
 
 struct Shape {
-    float x { 0 };
-    float y { 0 };
+    sf::Vector2f pos;
     Color fill_color { Color::White };
     float rotation { 0 };
     Shape(float _x, float _y, Color _fill_color, float _rotation = 0);
