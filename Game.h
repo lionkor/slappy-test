@@ -11,6 +11,7 @@ using Color = sf::Color;
 struct Shape {
     sf::Vector2f pos;
     Color fill_color { Color::White };
+    sf::Texture texture;
     float rotation { 0 };
     Shape(float _x, float _y, Color _fill_color, float _rotation = 0);
     Shape() = default;

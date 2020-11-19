@@ -45,6 +45,7 @@ void Game::draw(const Circle& circle) {
     circle_ptr->setFillColor(circle.fill_color);
     circle_ptr->setPosition(circle.pos);
     circle_ptr->setRotation(circle.rotation);
+    circle_ptr->setTexture(&circle.texture);
     m_rendering_queue.push(std::move(circle_ptr));
 }
 
@@ -54,6 +55,7 @@ void Game::draw(const Rectangle& rect) {
     rect_ptr->setOrigin(rect.width / 2.0, rect.height / 2.0);
     rect_ptr->setFillColor(rect.fill_color);
     rect_ptr->setRotation(rect.rotation);
+    rect_ptr->setTexture(&rect.texture);
     m_rendering_queue.push(std::move(rect_ptr));
 }
 
