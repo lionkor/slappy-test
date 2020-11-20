@@ -10,6 +10,9 @@ static class Player final : public Shape {
 public:
     const float moveSpeed = 150.0f;
 
+    // TODO: Need to add width and height from sf::ConvexShape when we get around that
+    // Cuz player atm has no visual representation
+
 public:
     Player();
     ~Player();
