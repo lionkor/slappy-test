@@ -1,8 +1,8 @@
 #include "Game.h"
 
 // what we use here is called a "member initializer list"
-Game::Game(const std::string& title)
-    : m_window(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), title) {
+Game::Game(const std::string& title):
+    m_window(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), title) {
     m_window.setFramerateLimit(60);
 }
 

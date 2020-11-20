@@ -3,27 +3,22 @@
 
 #include "Game.h"
 
-class Player {
+//FIXME: If player is to be seen, we are missing the width and height variables from Rectangle!!!
+
+static class Player final : public Shape {
 
 public:
-    unsigned int m_posX;
-    unsigned int m_posY;
-
-    const double m_speed = 2.0;
+    const float moveSpeed = 150.0f;
 
 public:
-    Player() {
-        // Setting player position to middle of the screen
-        m_posX = Game::SCREEN_WIDTH / 2;
-        m_posY = Game::SCREEN_HEIGHT / 2;
-    };
-
-    // 1. Desconstruct when game is closed
-    // 2. Deconstruct when player dies, maybe use new operator for player?
-    ~Player() {};
+    Player();
+    ~Player();
 
 public:
-    Rectangle draw();
+
+    Rectangle draw(Game& game);
+
+    void update(Game& game, float dt);
 };
 
 #endif // PLAYER_H
