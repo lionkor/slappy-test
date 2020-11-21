@@ -18,10 +18,10 @@ public:
     ~Player();
 
 public:
+    Player draw(Game& game, Rectangle& rect);
 
-    Rectangle draw(Game& game);
+    Player update(Game& game, float dt);
 
-    void update(Game& game, float dt);
 };
 
 #endif // PLAYER_H

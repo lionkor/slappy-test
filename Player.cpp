@@ -4,6 +4,8 @@
 #define _USE_MATH_DEFINES
 #include <math.h>
 
+Player player;
+
 Player::Player() {
     // Setting player to middle of the screen
     // FIXME: make it to refer to player's object not rect
@@ -15,19 +17,24 @@ Player::~Player() {
 
 }
 
+// Vector length
 static float length(const sf::Vector2f& vec) {
     return std::sqrt((vec.x * vec.x) + (vec.y * vec.y));
 }
 
+// Vector normalization
 static sf::Vector2f normalized(const sf::Vector2f& vec) {
     return vec / length(vec);
 }
 
-void draw(Game& game) {
+Rectangle draw(Game& game, Rectangle& rect, Player& player) {
+    rect.width = 10;
+    rect.height = 10;
 
+    return rect;
 }
 
-void update(Game& game, float dt) {
+Player update(Game& game, float dt,) {
 
     sf::Vector2f direction(0.0f, -1.0f);
 
@@ -49,4 +56,6 @@ void update(Game& game, float dt) {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
         player.pos += (rotatedNormDirection * player.moveSpeed) * dt;
     }
+
+    return player;
 }

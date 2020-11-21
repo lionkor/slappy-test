@@ -52,7 +52,7 @@ void Game::draw(const Circle& circle) {
 void Game::draw(const Rectangle& rect) {
     auto rect_ptr = std::make_unique<sf::RectangleShape>(sf::Vector2f { rect.width, rect.height });
     rect_ptr->setPosition(rect.pos);
-    rect_ptr->setOrigin(rect.width / 2.0, rect.height / 2.0);
+    rect_ptr->setOrigin(rect.width / 2.0f, rect.height / 2.0f);
     rect_ptr->setFillColor(rect.fill_color);
     rect_ptr->setRotation(rect.rotation);
     rect_ptr->setTexture(&rect.texture);
