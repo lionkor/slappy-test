@@ -3,6 +3,8 @@
 
 #include "Game.h"
 
+#include "Player.h"
+
 // called before the game starts. use this to initialize and prepare.
 void init(Game& game);
 

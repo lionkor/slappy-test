@@ -5,23 +5,20 @@
 
 //FIXME: If player is to be seen, we are missing the width and height variables from Rectangle!!!
 
-static class Player final : public Shape {
+struct Player {
+private:
+    const float moveSpeed = 150.0f;
 
 public:
-    const float moveSpeed = 150.0f;
+    Rectangle drawable;
 
     // TODO: Need to add width and height from sf::ConvexShape when we get around that
     // Cuz player atm has no visual representation
-
-public:
     Player();
     ~Player();
 
-public:
-    Player draw(Game& game, Rectangle& rect);
-
-    Player update(Game& game, float dt);
-
-};
+    void draw(Game& game);
+    void update(Game& game, float dt);
+}
 
 #endif // PLAYER_H

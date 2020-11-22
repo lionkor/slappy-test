@@ -4,13 +4,21 @@
 #define _USE_MATH_DEFINES
 #include <math.h>
 
-Player player;
+Player newPlayer = createPlayer();
+
+Player createPlayer() {
+    Player player;
+    return player;
+}
+
 
 Player::Player() {
     // Setting player to middle of the screen
     // FIXME: make it to refer to player's object not rect
-    player.pos.x = Game::SCREEN_WIDTH / 2.0f;
-    player.pos.y = Game::SCREEN_HEIGHT / 2.0f;
+    drawable.pos.x = Game::SCREEN_WIDTH / 2.0f;
+    drawable.pos.y = Game::SCREEN_HEIGHT / 2.0f;
+    drawable.height = 10.0f;
+    drawable.width = 10.0f;
 }
 
 Player::~Player() {
@@ -27,14 +35,7 @@ static sf::Vector2f normalized(const sf::Vector2f& vec) {
     return vec / length(vec);
 }
 
-Rectangle draw(Game& game, Rectangle& rect, Player& player) {
-    rect.width = 10;
-    rect.height = 10;
-
-    return rect;
-}
-
-Player update(Game& game, float dt,) {
+void Player::update(Game& game, float dt) {
 
     sf::Vector2f direction(0.0f, -1.0f);
 
@@ -42,20 +43,18 @@ Player update(Game& game, float dt,) {
 
     //FIXME: rect should be changed to player.
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-        player.rotation -= 3.5f;
+        drawable.rotation -= 3.5f;
     }
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-        player.rotation += 3.5f;
+        drawable.rotation += 3.5f;
     }
 
-    float rotationInRadians = player.rotation * M_PI / 180.0f;
+    float rotationInRadians = drawable.rotation * M_PI / 180.0f;
     float rotX = (cosf(rotationInRadians) * normDirection.x) - (sinf(rotationInRadians) * normDirection.y);
     float rotY = (sinf(rotationInRadians) * normDirection.x) + (cosf(rotationInRadians) * normDirection.y);
     sf::Vector2f rotatedNormDirection(rotX, rotY);
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-        player.pos += (rotatedNormDirection * player.moveSpeed) * dt;
+        newPlayer.pos += (rotatedNormDirection * newPlayer.moveSpeed) * dt;
     }
-
-    return player;
 }
