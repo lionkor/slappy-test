@@ -1,5 +1,5 @@
-#ifndef ASTEROIDS_H
-#define ASTEROIDS_H
+#ifndef GAMELOGIC_H
+#define GAMELOGIC_H
 
 #include "Game.h"
 
@@ -14,4 +14,4 @@ void update(Game& game, float dt);
 // called right before the game closes.
 void deinit(Game& game);
 
-#endif // ASTEROIDS_H
+#endif // GAMELOGIC_H

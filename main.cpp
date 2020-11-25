@@ -1,4 +1,4 @@
-#include "Asteroids.h"
+#include "Gamelogic.h"
 #include "Game.h"
 
 int main() {
