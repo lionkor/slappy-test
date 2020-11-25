@@ -4,14 +4,17 @@
 
 #include <iostream>
 
+#include "random.h"
+
 class Asteroid {
 public:
     Circle drawable;
     sf::Vector2f velocity;
 
     Asteroid()
-        : drawable(100 + (rand() % 600), 100 + (rand() % 600), 10, Color::Green)
-        , velocity((rand() % 20) - 10, (rand() % 20) - 10) {
+        // replaced rand with mt19937, might need polish for smoother experience
+        : drawable((randomGen(0, 1280)), (randomGen(0, 720)), 10, Color::Green)
+        , velocity((randomGen(50, 100) % 20) - 10, (randomGen(50, 100) % 20) - 10) {
     }
 
     void update(Game& game, float dt) {
@@ -37,7 +40,7 @@ void resize_asteroids_to(size_t new_size) {
 }
 
 void init(Game& game) {
-    srand(time(nullptr));
+    //srand(time(nullptr));
     player = new Player(game);
     asteroids = new Asteroid[asteroid_count];
 }
