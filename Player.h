@@ -5,7 +5,7 @@
 
 //FIXME: If player is to be seen, we are missing the width and height variables from Rectangle!!!
 
-struct Player {
+class Player {
 private:
     const float moveSpeed = 150.0f;
 
@@ -17,8 +17,7 @@ public:
     Player();
     ~Player();
 
-    void draw(Game& game);
     void update(Game& game, float dt);
-}
+};
 
 #endif // PLAYER_H

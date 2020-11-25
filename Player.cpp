@@ -4,14 +4,6 @@
 #define _USE_MATH_DEFINES
 #include <math.h>
 
-Player newPlayer = createPlayer();
-
-Player createPlayer() {
-    Player player;
-    return player;
-}
-
-
 Player::Player() {
     // Setting player to middle of the screen
     // FIXME: make it to refer to player's object not rect
@@ -22,7 +14,6 @@ Player::Player() {
 }
 
 Player::~Player() {
-
 }
 
 // Vector length
@@ -50,11 +41,13 @@ void Player::update(Game& game, float dt) {
     }
 
     float rotationInRadians = drawable.rotation * M_PI / 180.0f;
-    float rotX = (cosf(rotationInRadians) * normDirection.x) - (sinf(rotationInRadians) * normDirection.y);
-    float rotY = (sinf(rotationInRadians) * normDirection.x) + (cosf(rotationInRadians) * normDirection.y);
+    float rotX = (cos(rotationInRadians) * normDirection.x) - (sin(rotationInRadians) * normDirection.y);
+    float rotY = (sin(rotationInRadians) * normDirection.x) + (cos(rotationInRadians) * normDirection.y);
     sf::Vector2f rotatedNormDirection(rotX, rotY);
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-        newPlayer.pos += (rotatedNormDirection * newPlayer.moveSpeed) * dt;
+        drawable.pos += (rotatedNormDirection * moveSpeed) * dt;
     }
+
+    game.draw(drawable);
 }

@@ -1,12 +1,15 @@
 #include "Asteroids.h"
 #include "Player.h"
 
+#include <iostream>
+
+// translation unit = cpp file
+
 // This is truly terrible and I am sorry for my mistakes, code Jesus please forgib for my sinz.
 // FIXME: Better alternative is to declare have player inside game object / game itself
-extern Player player;
+Player player {};
 
 void init(Game&) {
-    //player.draw();
 }
 
 void update(Game& game, float dt) {
@@ -14,5 +17,4 @@ void update(Game& game, float dt) {
 }
 
 void deinit(Game&) {
-    //Player::~Player();
 }
