@@ -73,3 +73,8 @@ Shape::Shape(float _x, float _y, Color _fill_color, float _rotation)
     , fill_color(_fill_color)
     , rotation(_rotation) {
 }
+
+Circle::Circle(float _x, float _y, float _radius, Color _fill_color)
+    : Shape(_x, _y, _fill_color, 0)
+    , radius(_radius) {
+}

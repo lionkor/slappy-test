@@ -6,11 +6,11 @@
 
 class Asteroid {
 public:
-    Rectangle drawable;
+    Circle drawable;
     sf::Vector2f velocity;
 
     Asteroid()
-        : drawable(100 + (rand() % 600), 100 + (rand() % 600), 10, 10, Color::Green)
+        : drawable(100 + (rand() % 600), 100 + (rand() % 600), 10, Color::Green)
         , velocity((rand() % 20) - 10, (rand() % 20) - 10) {
     }
 
