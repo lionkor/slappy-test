@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "Game.h"
+#include "vector_math.h"
 
 #define _USE_MATH_DEFINES
 #include <math.h>
@@ -16,18 +17,7 @@ Player::Player() {
 Player::~Player() {
 }
 
-// Vector length
-static float length(const sf::Vector2f& vec) {
-    return std::sqrt((vec.x * vec.x) + (vec.y * vec.y));
-}
-
-// Vector normalization
-static sf::Vector2f normalized(const sf::Vector2f& vec) {
-    return vec / length(vec);
-}
-
 void Player::update(Game& game, float dt) {
-
     sf::Vector2f direction(0.0f, -1.0f);
 
     sf::Vector2f normDirection = normalized(direction);

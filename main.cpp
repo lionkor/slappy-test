@@ -1,5 +1,5 @@
- #include "Game.h"
 #include "Asteroids.h"
+#include "Game.h"
 
 int main() {
     // dont touch
