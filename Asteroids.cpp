@@ -11,7 +11,12 @@ public:
 
     Asteroid()
         : drawable(100 + (rand() % 600), 100 + (rand() % 600), 10, 10, Color::Green)
-        , velocity() {
+        , velocity((rand() % 20) - 10, (rand() % 20) - 10) {
+    }
+
+    void update(Game& game, float dt) {
+        drawable.pos += velocity * dt;
+        game.draw(drawable);
     }
 };
 
@@ -20,7 +25,7 @@ Player* player { nullptr };
 Asteroid* asteroids { nullptr };
 size_t asteroid_count { 5 };
 
-void resize(size_t new_size) {
+void resize_asteroids_to(size_t new_size) {
     Asteroid* new_asteroids = new Asteroid[new_size];
     for (size_t i = 0; i < asteroid_count; ++i) {
         new_asteroids[i] = asteroids[i];
@@ -37,12 +42,12 @@ void init(Game&) {
 }
 
 void update(Game& game, float dt) {
-    player->update(game, dt);
     for (size_t i = 0; i < asteroid_count; ++i) {
-        game.draw(asteroids[i].drawable);
+        asteroids[i].update(game, dt);
     }
+    player->update(game, dt);
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-        resize(asteroid_count + 1);
+        resize_asteroids_to(asteroid_count + 1);
     }
 }
 
