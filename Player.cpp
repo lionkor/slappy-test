@@ -5,11 +5,11 @@
 #define _USE_MATH_DEFINES
 #include <math.h>
 
-Player::Player() {
+Player::Player(Game& game) {
     // Setting player to middle of the screen
     // FIXME: make it to refer to player's object not rect
-    drawable.pos.x = Game::SCREEN_WIDTH / 2.0f;
-    drawable.pos.y = Game::SCREEN_HEIGHT / 2.0f;
+    drawable.pos.x = game.screen_size().x / 2.0f;
+    drawable.pos.y = game.screen_size().y / 2.0f;
     drawable.height = 10.0f;
     drawable.width = 10.0f;
 }
@@ -38,6 +38,8 @@ void Player::update(Game& game, float dt) {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
         drawable.pos += (rotatedNormDirection * moveSpeed) * dt;
     }
+
+    ensure_boundaries(drawable.pos, game.screen_size());
 
     game.draw(drawable);
 }

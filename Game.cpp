@@ -1,8 +1,8 @@
 #include "Game.h"
 
 // what we use here is called a "member initializer list"
-Game::Game(const std::string& title):
-    m_window(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), title) {
+Game::Game(const std::string& title)
+    : m_window(sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT), title) {
     m_window.setFramerateLimit(60);
 }
 
@@ -47,6 +47,10 @@ void Game::draw(const Circle& circle) {
     circle_ptr->setRotation(circle.rotation);
     circle_ptr->setTexture(&circle.texture);
     m_rendering_queue.push(std::move(circle_ptr));
+}
+
+sf::Vector2i Game::screen_size() const {
+    return sf::Vector2i(m_window.getSize());
 }
 
 void Game::draw(const Rectangle& rect) {

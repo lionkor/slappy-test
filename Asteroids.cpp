@@ -16,6 +16,7 @@ public:
 
     void update(Game& game, float dt) {
         drawable.pos += velocity * dt;
+        ensure_boundaries(drawable.pos, game.screen_size());
         game.draw(drawable);
     }
 };
@@ -35,9 +36,9 @@ void resize_asteroids_to(size_t new_size) {
     asteroid_count = new_size;
 }
 
-void init(Game&) {
+void init(Game& game) {
     srand(time(nullptr));
-    player = new Player;
+    player = new Player(game);
     asteroids = new Asteroid[asteroid_count];
 }
 

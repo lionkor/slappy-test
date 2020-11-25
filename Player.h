@@ -14,7 +14,7 @@ public:
 
     // TODO: Need to add width and height from sf::ConvexShape when we get around that
     // Cuz player atm has no visual representation
-    Player();
+    Player(Game& game);
     ~Player();
 
     void update(Game& game, float dt);

@@ -32,7 +32,7 @@ struct Circle final : public Shape {
 };
 
 class Game {
-public:
+private:
     static const int SCREEN_WIDTH = 1280;
     static const int SCREEN_HEIGHT = 720;
 
@@ -53,6 +53,8 @@ public:
 
     void draw(const Rectangle& rect);
     void draw(const Circle& circle);
+
+    sf::Vector2i screen_size() const;
 };
 
 #endif // GAME_H
