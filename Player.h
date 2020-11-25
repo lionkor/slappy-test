@@ -11,6 +11,7 @@ private:
 
 public:
     Rectangle drawable;
+    bool is_dead = false;
 
     // TODO: Need to add width and height from sf::ConvexShape when we get around that
     // Cuz player atm has no visual representation

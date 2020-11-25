@@ -1,10 +1,9 @@
 #include "Gamelogic.h"
+#include "Asteroid.h"
 #include "Player.h"
 #include "vector_math.h"
 
-#include <iostream>
-
-#include "Asteroid.h"
+#include <cmath>
 
 // heap allocate for the heck of it
 Player* player { nullptr };
@@ -28,6 +27,22 @@ void init(Game& game) {
 }
 
 void update(Game& game, float dt) {
+
+    // Basic collision
+    // Implemented using vector distance from player
+    // FIXME: Only for one asteroid instead of all of them
+    // FIXME: The calculation is possibly wrong because there is a bug when player simply dissapears, even though it hasn't touched anything
+    for (size_t i = 0; i < asteroid_count; i++) {
+        asteroids->distToPlayer = sqrtf(powf((player->drawable.pos.x - asteroids->drawable.pos.x), 2.0f) + powf((player->drawable.pos.y - asteroids->drawable.pos.y), 2.0f));
+
+        // Base equation for distance
+        // sqrtf(powf(asteroids->drawable.pos.x - player->drawable.pos.x)) + (powf(asteroids->drawable.pos.y - player->drawable.pos.y));
+
+        if (asteroids->distToPlayer <= 15.0f) {
+            player->is_dead = true;
+        }
+    }
+
     for (size_t i = 0; i < asteroid_count; ++i) {
         asteroids[i].update(game, dt);
     }

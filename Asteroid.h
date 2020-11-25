@@ -2,13 +2,15 @@
 #define ASTEROID_H
 
 #include "Game.h"
-
 #include "random.h"
+#include "vector_math.h"
 
 class Asteroid {
 public:
     Circle drawable;
     sf::Vector2f velocity;
+
+    float distToPlayer { 0 };
 
     Asteroid()
         // replaced rand with mt19937, might need polish for smoother experience

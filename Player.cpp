@@ -18,28 +18,30 @@ Player::~Player() {
 }
 
 void Player::update(Game& game, float dt) {
-    sf::Vector2f direction(0.0f, -1.0f);
+    if (!is_dead) {
+        sf::Vector2f direction(0.0f, -1.0f);
 
-    sf::Vector2f normDirection = normalized(direction);
+        sf::Vector2f normDirection = normalized(direction);
 
-    //FIXME: rect should be changed to player.
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-        drawable.rotation -= 3.5f;
+        //FIXME: rect should be changed to player.
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+            drawable.rotation -= 3.5f;
+        }
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+            drawable.rotation += 3.5f;
+        }
+
+        float rotationInRadians = drawable.rotation * M_PI / 180.0f;
+        float rotX = (cos(rotationInRadians) * normDirection.x) - (sin(rotationInRadians) * normDirection.y);
+        float rotY = (sin(rotationInRadians) * normDirection.x) + (cos(rotationInRadians) * normDirection.y);
+        sf::Vector2f rotatedNormDirection(rotX, rotY);
+
+        if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+            drawable.pos += (rotatedNormDirection * moveSpeed) * dt;
+        }
+
+        ensure_boundaries(drawable.pos, game.screen_size());
+
+        game.draw(drawable);
     }
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-        drawable.rotation += 3.5f;
-    }
-
-    float rotationInRadians = drawable.rotation * M_PI / 180.0f;
-    float rotX = (cos(rotationInRadians) * normDirection.x) - (sin(rotationInRadians) * normDirection.y);
-    float rotY = (sin(rotationInRadians) * normDirection.x) + (cos(rotationInRadians) * normDirection.y);
-    sf::Vector2f rotatedNormDirection(rotX, rotY);
-
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-        drawable.pos += (rotatedNormDirection * moveSpeed) * dt;
-    }
-
-    ensure_boundaries(drawable.pos, game.screen_size());
-
-    game.draw(drawable);
 }
