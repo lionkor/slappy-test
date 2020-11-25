@@ -4,25 +4,7 @@
 
 #include <iostream>
 
-#include "random.h"
-
-class Asteroid {
-public:
-    Circle drawable;
-    sf::Vector2f velocity;
-
-    Asteroid()
-        // replaced rand with mt19937, might need polish for smoother experience
-        : drawable((randomGen(0, 1280)), (randomGen(0, 720)), 10, Color::Green)
-        , velocity((randomGen(50, 100) % 20) - 10, (randomGen(50, 100) % 20) - 10) {
-    }
-
-    void update(Game& game, float dt) {
-        drawable.pos += velocity * dt;
-        ensure_boundaries(drawable.pos, game.screen_size());
-        game.draw(drawable);
-    }
-};
+#include "Asteroid.h"
 
 // heap allocate for the heck of it
 Player* player { nullptr };
