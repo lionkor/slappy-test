@@ -41,7 +41,6 @@ private:
     bool m_running { true };
     std::queue<std::unique_ptr<sf::Drawable>> m_rendering_queue;
 
-
 public:
     Game(const std::string& title);
 
