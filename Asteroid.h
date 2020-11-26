@@ -11,7 +11,7 @@ public:
     sf::Vector2f velocity;
 
     float distToPlayer { 0 };
-
+    
     Asteroid()
         // replaced rand with mt19937, might need polish for smoother experience
         : drawable((randomGen(0, 1280)), (randomGen(0, 720)), 10, Color::Green)

@@ -32,13 +32,11 @@ void update(Game& game, float dt) {
     // Implemented using vector distance from player
     // FIXME: Only for one asteroid instead of all of them
     // FIXME: The calculation is possibly wrong because there is a bug when player simply dissapears, even though it hasn't touched anything
+
     for (size_t i = 0; i < asteroid_count; i++) {
-        asteroids->distToPlayer = sqrtf(powf((player->drawable.pos.x - asteroids->drawable.pos.x), 2.0f) + powf((player->drawable.pos.y - asteroids->drawable.pos.y), 2.0f));
+        asteroids[i].distToPlayer = std::sqrtf(std::pow((asteroids[i].drawable.pos.x - player->drawable.pos.x), 2.0f) + std::pow((asteroids[i].drawable.pos.y - player->drawable.pos.y), 2.0f));
 
-        // Base equation for distance
-        // sqrtf(powf(asteroids->drawable.pos.x - player->drawable.pos.x)) + (powf(asteroids->drawable.pos.y - player->drawable.pos.y));
-
-        if (asteroids->distToPlayer <= 15.0f) {
+        if (asteroids[i].distToPlayer <= 16.0f) {
             player->is_dead = true;
         }
     }
