@@ -5,7 +5,6 @@
 
 #include <cmath>
 
-// heap allocate for the heck of it
 Player* player { nullptr };
 Asteroid* asteroids { nullptr };
 size_t asteroid_count { 5 };
@@ -21,27 +20,20 @@ void resize_asteroids_to(size_t new_size) {
 }
 
 void init(Game& game) {
-    //srand(time(nullptr));
     player = new Player(game);
     asteroids = new Asteroid[asteroid_count];
 }
 
 void update(Game& game, float dt) {
 
-    // Basic collision
-    // Implemented using vector distance from player
-    // FIXME: Only for one asteroid instead of all of them
-    // FIXME: The calculation is possibly wrong because there is a bug when player simply dissapears, even though it hasn't touched anything
-
-    for (size_t i = 0; i < asteroid_count; i++) {
+    for (size_t i = 0; i < asteroid_count; ++i) {
+        // Collision with asteroids
         asteroids[i].distToPlayer = std::sqrtf(std::pow((asteroids[i].drawable.pos.x - player->drawable.pos.x), 2.0f) + std::pow((asteroids[i].drawable.pos.y - player->drawable.pos.y), 2.0f));
 
         if (asteroids[i].distToPlayer <= 16.0f) {
             player->is_dead = true;
         }
-    }
 
-    for (size_t i = 0; i < asteroid_count; ++i) {
         asteroids[i].update(game, dt);
     }
     player->update(game, dt);

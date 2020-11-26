@@ -13,7 +13,7 @@ public:
     float distToPlayer { 0 };
     
     Asteroid()
-        // replaced rand with mt19937, might need polish for smoother experience
+        // TODO: replaced rand with mt19937, might need polish for smoother experience
         : drawable((randomGen(0, 1280)), (randomGen(0, 720)), 10, Color::Green)
         , velocity((randomGen(50, 100) % 20) - 10, (randomGen(50, 100) % 20) - 10) {
     }
